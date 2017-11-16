@@ -85,6 +85,15 @@ objects:
         targetPort: 8080
     selector:
       deploymentconfig: f8adminproxy
+- kind: Route
+  apiVersion: v1
+  metadata:
+    name: f8adminproxy
+  spec:
+    host: ''
+    to:
+      kind: Service
+      name: f8adminproxy
 parameters:
 - name: IMAGE_TAG
   value: latest
