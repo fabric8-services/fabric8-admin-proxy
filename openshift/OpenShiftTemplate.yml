@@ -33,8 +33,15 @@ objects:
           app: f8adminproxy
           deploymentconfig: f8adminproxy
       spec:
+        volumes:
+        - name: traefik-config-dir
+          secret:
+            secretName: f8adminproxy
+            items:
+              - key: traefik.toml
+                path: traefik.toml
         containers:
-          image: registry.devshift.net/fabric8-services/fabric8-admin-proxy:${IMAGE_TAG}
+        - image: registry.devshift.net/fabric8-services/fabric8-admin-proxy:${IMAGE_TAG}
           imagePullPolicy: Always
           name: f8adminproxy
           ports:
@@ -65,13 +72,6 @@ objects:
             periodSeconds: 10
             successThreshold: 1
             timeoutSeconds: 1
-          volumes:
-          - name: traefik-config-dir
-            secret:
-              name: f8adminproxy
-              items:
-                - key: traefik.toml
-                  path: traefik.toml
     triggers:
     - type: ConfigChange
 - apiVersion: v1
