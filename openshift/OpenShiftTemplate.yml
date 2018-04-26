@@ -41,7 +41,7 @@ objects:
               - key: traefik.toml
                 path: traefik.toml
         containers:
-        - image: registry.devshift.net/fabric8-services/fabric8-admin-proxy:${IMAGE_TAG}
+        - image: ${IMAGE}:${IMAGE_TAG}
           imagePullPolicy: Always
           name: f8adminproxy
           ports:
@@ -98,5 +98,7 @@ objects:
       kind: Service
       name: f8adminproxy
 parameters:
+- name: IMAGE
+  value: registry.devshift.net/fabric8-services/fabric8-admin-proxy
 - name: IMAGE_TAG
   value: latest
