@@ -99,6 +99,6 @@ objects:
       name: f8adminproxy
 parameters:
 - name: IMAGE
-  value: registry.devshift.net/fabric8-services/fabric8-admin-proxy
+  value: quay.io/openshiftio/fabric8-services-fabric8-admin-proxy
 - name: IMAGE_TAG
   value: latest
